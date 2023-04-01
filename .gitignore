@@ -14,3 +14,9 @@ epub/temp
 .#*
 figures/*
 */*.session
+.venv
+*.epub
+*.pdf
+en/progit-rinohtype.pdf.rtc
+en/progit-rinohtype.pdf.stylelog
+en/progit.rst

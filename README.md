@@ -1,11 +1,18 @@
-# Note to self
-This repo is public, but more of a personal project for fun.
+# Note
+This repo is public, but more of a personal project for fun, for testing PDF generation directly from markup.
 
-This branch is something of a sandbox for testing various PDF creation tools
+The excellent [pandoc](https://pandoc.org/) project has in its documentation [instructions for creating a sample epub](https://pandoc.org/epub.html).
+
+The figures were modified according to those instructions, no need to repeat here.
+
+Here we're testing
 - pandoc (especially with new **Typst** support)
 - rst2pdf
 - rinohtype
+- epub
 
+## TODO:
+ - RST format generated has directives for figures, which have an option block occasionally spanning more than one line. This is a problem somehow, don't know how to fix it.
 
 
 # Progit contents (original readme)
