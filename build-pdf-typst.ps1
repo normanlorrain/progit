@@ -1,4 +1,4 @@
-pandoc  --pdf-engine=typst -o progit-typst.pdf en/title.txt `
+pandoc  -M mainfont="STIX Two Text" --toc --data-dir=./pandoc/ --pdf-engine=typst -o progit-typst.pdf en/title.txt `
   en/01-introduction/01-chapter1.markdown `
   en/02-git-basics/01-chapter2.markdown `
   en/03-git-branching/01-chapter3.markdown `
