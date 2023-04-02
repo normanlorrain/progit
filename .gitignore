@@ -16,7 +16,10 @@ figures/*
 */*.session
 .venv
 *.epub
+*.rst
 *.pdf
-en/progit-rinohtype.pdf.rtc
-en/progit-rinohtype.pdf.stylelog
-en/progit.rst
+
+
+# rinotype
+*.rtc
+*.stylelog
