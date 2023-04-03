@@ -1,4 +1,7 @@
 echo "PANDOC"
+
+# The RST generated has directives for figures, which have an option block that occasionally spans more than one line. Turn off wrapping to prevent problems with this wrapping.
+
 pandoc --verbose --wrap=none  -o progit.rst en/title.txt 01-introduction/01-chapter1.markdown `
   en/02-git-basics/01-chapter2.markdown `
   en/03-git-branching/01-chapter3.markdown `
