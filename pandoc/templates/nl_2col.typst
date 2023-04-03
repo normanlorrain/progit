@@ -1,0 +1,86 @@
+$-- This is based on the default Pandoc template (3.1.2) for Typst output
+$-- Generated with pandoc --print-default-template=typst
+$-- To activate it point to the parent directory with pandoc --data-dir ... 
+$-- and set the output type to .typ or pdf-engine=typst
+
+// ------------  DEFINITIONS
+#let blockquote(body) = [
+  #set text( size: 0.92em )
+  #block(inset: (left: 1.5em, top: 0.2em, bottom: 0.2em))[#body]
+]
+
+#let horizontalrule = [
+  #line(start: (25%,0%), end: (75%,0%))
+]
+
+#let endnote(num, contents) = [
+  #stack(dir: ltr, spacing: 3pt, super[#num], contents)
+]
+
+
+#let title = "$title$"
+#let author = "$author$"
+#let date = "$date-meta$"
+#let abstract = none
+#let cols = 2
+#let margin = (x: 1.25in, y: 1.25in)
+#let paper = "us-letter"
+#let lang = "en"
+#let region = "US"
+#let serif = ("$mainfont$","Garamond")
+#let sans = ( "Arial", "Latin Modern Sans",)
+#let fontsize = 11pt
+#let sectionnumbering = "1."
+
+
+#set page(
+  paper: paper,
+  margin: margin,
+  numbering: "1",
+)
+#set par(justify: true)
+#set text(lang: lang,
+          region: region,
+          font: serif,
+          size: fontsize)
+#set heading(numbering: sectionnumbering)
+
+#if title != none {
+  align(center)[#text(font:sans, weight: "bold", size:5em )[#title]]
+  
+}
+
+#if author != none {
+  align(center)[#text(font:sans, weight: "bold", size:2em )[#author]]
+  
+}
+
+#if date != none {
+  align(center)[#block(inset: 1em)[
+    #date
+  ]]
+}
+
+#if abstract != none {
+  block(inset: 2em)[
+  #text(weight: "semibold")[Abstract] #h(1em) #abstract
+  ]
+}
+
+#show heading: txt => text(font:sans)[#txt]
+
+
+
+
+#outline(
+  title: [Contents],
+  depth: 3,
+  indent: true
+);
+#pagebreak()
+
+#show: etc => columns( cols, etc )
+
+$body$
+
+
