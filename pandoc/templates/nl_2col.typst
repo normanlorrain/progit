@@ -1,4 +1,6 @@
-// This is based on the default Pandoc template (3.1.2) for Typst output
+// This is a mix of Pandoc and Typst template code. Pandoc runs first of course, 
+// filling in the $$...$$ variables and logic
+// Based on the default Pandoc template (3.1.2) for Typst output
 // Generated with pandoc --print-default-template=typst
 // To activate it point to the parent directory with 
 //        pandoc --data-dir ... 
@@ -22,7 +24,6 @@
 #let title = "$title$"
 #let author = "$author$"
 #let date = "$date$"
-#let abstract = none
 #let cols = 2
 #let margin = (x: 1.25in, y: 1.25in)
 #let paper = "us-letter"
@@ -47,6 +48,7 @@
 #set heading(numbering: sectionnumbering)
 #show heading: txt => text(font:sans)[#txt]
 
+#align(horizon)[
 #if title != none {
   align(center)[#text(font:sans, weight: "bold", size:5em )[#title]]
   
@@ -63,11 +65,16 @@
   ]]
 }
 
-#if abstract != none {
-  block(inset: 2em)[
-  #text(weight: "semibold")[Abstract] #h(1em) #abstract
+// Abstract may contain links (these have quotes), so these are placed in a Pandoc template construct.
+$if(abstract)$
+#align(center)[
+  #block(inset: 2em)[
+      #text(font:sans, weight: "semibold")[Abstract] 
+      #par()[$abstract$]
   ]
-}
+]
+$endif$
+]
 
 
 #pagebreak()
