@@ -1,7 +1,8 @@
-$-- This is based on the default Pandoc template (3.1.2) for Typst output
-$-- Generated with pandoc --print-default-template=typst
-$-- To activate it point to the parent directory with pandoc --data-dir ... 
-$-- and set the output type to .typ or pdf-engine=typst
+// This is based on the default Pandoc template (3.1.2) for Typst output
+// Generated with pandoc --print-default-template=typst
+// To activate it point to the parent directory with 
+//        pandoc --data-dir ... 
+// and set the output type to typst
 
 // ------------  DEFINITIONS
 #let blockquote(body) = [
@@ -20,7 +21,7 @@ $-- and set the output type to .typ or pdf-engine=typst
 
 #let title = "$title$"
 #let author = "$author$"
-#let date = "$date-meta$"
+#let date = "$date$"
 #let abstract = none
 #let cols = 2
 #let margin = (x: 1.25in, y: 1.25in)
@@ -44,6 +45,7 @@ $-- and set the output type to .typ or pdf-engine=typst
           font: serif,
           size: fontsize)
 #set heading(numbering: sectionnumbering)
+#show heading: txt => text(font:sans)[#txt]
 
 #if title != none {
   align(center)[#text(font:sans, weight: "bold", size:5em )[#title]]
@@ -67,16 +69,17 @@ $-- and set the output type to .typ or pdf-engine=typst
   ]
 }
 
-#show heading: txt => text(font:sans)[#txt]
 
-
-
-
-#outline(
-  title: [Contents],
-  depth: 3,
-  indent: true
-);
+#pagebreak()
+// Table of Contents 
+// Pandoc --toc argument will turn this on
+#if $toc$ {
+  outline(
+    title: [Contents],
+    depth: 3,
+    indent: true
+  );
+}
 #pagebreak()
 
 #show: etc => columns( cols, etc )

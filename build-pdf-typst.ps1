@@ -1,6 +1,11 @@
 echo "PANDOC"
-# Template specified by --variable=template:foobar
+
+# Pandoc deals with the "build date" inconsistently depending on html/pdf/etc 
+# Forcing it here and passing it as a variable.
+$date = Get-Date -Format "yyyy-MM-dd"
+
 pandoc  `
+  --variable=date:$date `
   --data-dir=./pandoc/ <# path for the template #>`
   --template nl_2col <# name of the template #>`
   -t typst <# TO format (thus activating the template) #>`
