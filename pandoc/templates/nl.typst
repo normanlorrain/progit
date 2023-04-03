@@ -1,0 +1,133 @@
+$-- This is based on the default Pandoc template (3.1.2) for Typst output
+$-- Generated with pandoc --print-default-template=typst
+$-- To activate it point to the parent directory with pandoc --data-dir ... 
+$-- and set the output type to .typ or pdf-engine=typst
+
+$definitions.typst()$
+
+#show terms: it => {
+  it.children
+    .map(child => [
+      #strong[#child.term]
+      #block(inset: (left: 1.5em, top: -0.4em))[#child.description]
+      ])
+    .join()
+}
+
+// START OF Typst template, 
+
+$if(template)$
+// "Custom:"
+#import "$template$": conf
+$else$
+// "Built-in"
+$template.typst()$
+$endif$
+
+// END OF TEMPLATE
+
+
+
+#show: doc => conf(
+$if(title)$
+  title: [$title$],
+$endif$
+$if(author)$
+  authors: (
+$for(author)$
+$if(author.name)$
+    ( name: [$author.name$],
+      affiliation: [$author.affiliation$],
+      email: [$author.email$] ),
+$else$
+    ( name: [$author$],
+      affiliation: [],
+      email: [] ),
+$endif$
+$endfor$
+    ),
+$endif$
+$if(date)$
+  date: [$date$],
+$endif$
+$if(lang)$
+  lang: "$lang$",
+$endif$
+$if(region)$
+  region: "$region$",
+$endif$
+$if(abstract)$
+  abstract: [$abstract$],
+$endif$
+$if(margin)$
+  margin: ($for(margin/pairs)$$margin.key$: $margin.value$,$endfor$),
+$endif$
+$if(papersize)$
+  paper: "$papersize$",
+$endif$
+$if(mainfont)$
+  font: ("$mainfont$",),
+$endif$
+$if(fontsize)$
+  fontsize: $fontsize$,
+$endif$
+$if(section-numbering)$
+  sectionnumbering: "$section-numbering$",
+$endif$
+  cols: $if(columns)$$columns$$else$1$endif$,
+  doc,
+)
+
+$for(header-includes)$
+$header-includes$
+
+$endfor$
+$for(include-before)$
+$include-before$
+
+$endfor$
+
+
+#set heading(numbering: "1.")
+
+$if(toc)$
+#outline(
+  title: [NL template generated Contents],
+  depth: 3,
+  indent: true
+);
+$endif$
+
+
+
+$body$
+
+
+
+
+$if(notes)$
+#v(1em)
+#block[
+#horizontalrule
+#set text(size: .88em)
+#v(3pt) // otherwise first note marker is swallowed, bug?
+
+$notes$
+]
+$endif$
+
+
+
+
+$if(bibliographystyle)$
+
+#set bibliography(style: "$bibliographystyle$")
+$endif$
+$for(bibliography)$
+
+#bibliography("$bibliography$")
+$endfor$
+$for(include-after)$
+
+$include-after$
+$endfor$

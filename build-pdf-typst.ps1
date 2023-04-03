@@ -1,4 +1,6 @@
-pandoc  -M mainfont="STIX Two Text" --toc --data-dir=./pandoc/ --pdf-engine=typst -o progit-typst.pdf en/title.txt `
+echo "PANDOC"
+# Template specified by --variable=template:foobar
+pandoc  -M mainfont="STIX Two Text"  --standalone --data-dir=./pandoc/ --toc  --template nl -t typst -o progit.typ en/title.txt `
   en/01-introduction/01-chapter1.markdown `
   en/02-git-basics/01-chapter2.markdown `
   en/03-git-branching/01-chapter3.markdown `
@@ -9,3 +11,5 @@ pandoc  -M mainfont="STIX Two Text" --toc --data-dir=./pandoc/ --pdf-engine=typs
   en/08-git-and-other-scms/01-chapter8.markdown `
   en/09-git-internals/01-chapter9.markdown
 
+echo "TYPST"
+typst.exe progit.typ progit-typst.pdf

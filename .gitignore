@@ -23,3 +23,5 @@ figures/*
 # rinotype
 *.rtc
 *.stylelog
+
+progit.typ
