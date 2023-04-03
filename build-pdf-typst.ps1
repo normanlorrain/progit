@@ -1,6 +1,13 @@
 echo "PANDOC"
 # Template specified by --variable=template:foobar
-pandoc  -M mainfont="STIX Two Text"  --standalone --data-dir=./pandoc/ --toc  --template nl_2col -t typst -o progit.typ en/title.txt `
+pandoc  `
+  --data-dir=./pandoc/ <# path for the template #>`
+  --template nl_2col <# name of the template #>`
+  -t typst <# TO format (thus activating the template) #>`
+  --toc  `
+  -o progit.typ `
+  -M mainfont="STIX Two Text"  `
+  en/title.txt `
   en/01-introduction/01-chapter1.markdown `
   en/02-git-basics/01-chapter2.markdown `
   en/03-git-branching/01-chapter3.markdown `
